@@ -9,9 +9,15 @@ router.get('/', (req, res, next) => {
 }) ; 
 
 router.post('/', (req, res, next) => {
+    const person = {
+        name: req.body.name,
+        surname: req.body.surname,
+        age: req.body.age 
+    }
+   
     res.status(201).json({
-        message: 'Handling request POST requets to /people'
-
+        message: 'Handling request POST requets to /people',
+        createdPerson: person
     }) ; 
 }) ; 
 //Check if ID is valid length - > 13
@@ -39,8 +45,10 @@ res.status(200).json({
  }) ; 
 //Delete invalid record
  router.delete('/:personId', (req, res, next) => {
+ 
     res.status(200).json({
-        message: 'Deleted record'
+        message: 'Deleted record',
+   
     });
      }) ; 
 
